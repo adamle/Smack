@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A30CFF86BA5250ECA648FD86 /* Pods_Smack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39FB812806B384A4D49F330 /* Pods_Smack.framework */; };
 		DE40AC051FCF1417009AC7A2 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC041FCF1417009AC7A2 /* CreateAccountVC.swift */; };
+		DE40AC081FCF1CC2009AC7A2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC071FCF1CC2009AC7A2 /* AuthService.swift */; };
+		DE40AC0A1FD0915F009AC7A2 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */; };
 		DE49AE441FCDF0DE00160F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE49AE431FCDF0DE00160F94 /* AppDelegate.swift */; };
 		DE49AE491FCDF0DE00160F94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE49AE471FCDF0DE00160F94 /* Main.storyboard */; };
 		DE49AE4B1FCDF0DE00160F94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE49AE4A1FCDF0DE00160F94 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		8C747CA36ED796B5A871A863 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
 		B39FB812806B384A4D49F330 /* Pods_Smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE40AC041FCF1417009AC7A2 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
+		DE40AC071FCF1CC2009AC7A2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		DE49AE401FCDF0DE00160F94 /* Smack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE49AE431FCDF0DE00160F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE49AE481FCDF0DE00160F94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +75,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE40AC061FCF1CA5009AC7A2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DE40AC071FCF1CC2009AC7A2 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		DE49AE371FCDF0DE00160F94 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,7 @@
 		DE49AE421FCDF0DE00160F94 /* Smack */ = {
 			isa = PBXGroup;
 			children = (
+				DE40AC061FCF1CA5009AC7A2 /* Services */,
 				DE49AE631FCF059800160F94 /* Utilities */,
 				DE49AE5C1FCDFBC700160F94 /* Model */,
 				DE49AE5B1FCDFBC300160F94 /* View */,
@@ -131,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				DE49AE611FCEC9BA00160F94 /* GradientView.swift */,
+				DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,8 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE49AE601FCDFBFD00160F94 /* ChannelVC.swift in Sources */,
+				DE40AC0A1FD0915F009AC7A2 /* RoundedButton.swift in Sources */,
 				DE49AE5E1FCDFBEC00160F94 /* ChatVC.swift in Sources */,
 				DE40AC051FCF1417009AC7A2 /* CreateAccountVC.swift in Sources */,
+				DE40AC081FCF1CC2009AC7A2 /* AuthService.swift in Sources */,
 				DE49AE671FCF0A7000160F94 /* LoginVC.swift in Sources */,
 				DE49AE621FCEC9BA00160F94 /* GradientView.swift in Sources */,
 				DE49AE441FCDF0DE00160F94 /* AppDelegate.swift in Sources */,
