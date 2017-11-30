@@ -25,6 +25,15 @@ class CreateAccountVC: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDataService.instance.avatarName != "" {
+            userImg.image = UIImage(named: UserDataService.instance.avatarName)
+            avatarName = UserDataService.instance.avatarName
+        }
+    }
+    
+    
 
     @IBAction func createAcctPressed(_ sender: Any) {
         // Grab value from email and password textfield
@@ -39,7 +48,7 @@ class CreateAccountVC: UIViewController {
                         AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
                             if success {
                                 print(UserDataService.instance.name, UserDataService.instance.avatarName)
-                                self.performSegue(withIdentifier: UNWIND_TO_CHANNELVC, sender: nil)
+                                self.performSegue(withIdentifier: UNWIND_TO_CHANNEL_VC, sender: nil)
                             }
                         })
                     }
@@ -49,13 +58,14 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func chooseAvaPressed(_ sender: Any) {
+        performSegue(withIdentifier: TO_CHOOSE_AVATAR_VC, sender: nil)
     }
     
     @IBAction func genBgColorPressed(_ sender: Any) {
     }
     
     @IBAction func closeBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: UNWIND_TO_CHANNELVC, sender: nil)
+        performSegue(withIdentifier: UNWIND_TO_CHANNEL_VC, sender: nil)
     }
     
 }

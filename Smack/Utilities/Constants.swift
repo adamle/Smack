@@ -16,12 +16,11 @@ let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_USER_ADD = "\(BASE_URL)user/add"
 
-
 // Segue
-
-let TO_LOGIN = "toLogin"
-let TO_CREATE_ACCOUNT = "toCreateAccount"
-let UNWIND_TO_CHANNELVC = "unwindToChannelVC"
+let TO_LOGIN_VC = "toLogin"
+let TO_CREATE_ACCOUNT_VC = "toCreateAccount"
+let UNWIND_TO_CHANNEL_VC = "unwindToChannelVC"
+let TO_CHOOSE_AVATAR_VC = "toChooseAvatar"
 
 // UserDefaults
 let TOKEN_KEY = "token"
