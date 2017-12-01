@@ -130,6 +130,9 @@
                                     <constraint firstAttribute="width" constant="24" id="Txm-z7-7hh"/>
                                 </constraints>
                                 <state key="normal" image="addChannelButton"/>
+                                <connections>
+                                    <action selector="addChanPressed:" destination="KaO-kc-NhE" eventType="touchUpInside" id="vVT-3G-6HX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-eh-2Ee">
                                 <rect key="frame" x="130" y="571" width="49" height="38"/>

@@ -48,6 +48,15 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // Add AddChannel Modal to the main Channel  view
+    @IBAction func addChanPressed(_ sender: Any) {
+        let addChannel = AddChannelVC()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil )
+    }
+    
+    
+    
     @objc func UserDataDidChange(_ notif: Notification) {
         setupUserInfo()
     }
@@ -81,6 +90,9 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
     }
+    
+    
+    
 }
 
 
