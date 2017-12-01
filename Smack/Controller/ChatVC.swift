@@ -23,6 +23,11 @@ class ChatVC: UIViewController {
         // Tap to conceal the sw_rear
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
-        
+        // After user close the app and reopen, check if user already logged in
+        if AuthService.instance.isLoggedIn {
+            AuthService.instance.findUserByEmail(completion: { (success) in
+                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+            })
+        }
     }
 }

@@ -25,6 +25,10 @@ class ChannelVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setupUserInfo()
+    }
+    
     @IBAction func loginBtnPressed(_ sender: Any) {
         
         if AuthService.instance.isLoggedIn {
@@ -39,6 +43,10 @@ class ChannelVC: UIViewController {
     }
     
     @objc func UserDataDidChange(_ notif: Notification) {
+        setupUserInfo()
+    }
+    
+    func setupUserInfo() {
         if AuthService.instance.isLoggedIn == true {
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
             userImg.image = UIImage(named: UserDataService.instance.avatarName)

@@ -232,6 +232,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginPressed:" destination="j0w-Sd-VTN" eventType="touchUpInside" id="VcY-cb-snc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar6-ZQ-CaX">
                                 <rect key="frame" x="78.5" y="348" width="218" height="29"/>
@@ -291,6 +294,10 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kal-0S-Tr2">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.29128697510000001" green="0.3200853467" blue="0.64825153349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -305,10 +312,15 @@
                             <constraint firstItem="DUj-oT-mwQ" firstAttribute="centerX" secondItem="1H4-6V-DYb" secondAttribute="centerX" id="dw7-KN-f62"/>
                             <constraint firstItem="ar6-ZQ-CaX" firstAttribute="centerX" secondItem="1H4-6V-DYb" secondAttribute="centerX" id="opS-qt-3A3"/>
                             <constraint firstItem="W9b-eE-NFn" firstAttribute="top" secondItem="veB-QY-BhC" secondAttribute="bottom" constant="40" id="wPl-uM-P2i"/>
+                            <constraint firstItem="kal-0S-Tr2" firstAttribute="centerX" secondItem="1H4-6V-DYb" secondAttribute="centerX" id="wqI-u9-tyo"/>
+                            <constraint firstItem="kal-0S-Tr2" firstAttribute="centerY" secondItem="1H4-6V-DYb" secondAttribute="centerY" constant="-100" id="xTF-Kp-a6h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wbg-aJ-Rlg"/>
                     </view>
                     <connections>
+                        <outlet property="emailTxt" destination="uDj-5B-zZ7" id="mXm-yV-ldZ"/>
+                        <outlet property="passwordTxt" destination="tIH-1A-VSF" id="rAr-b9-Gxd"/>
+                        <outlet property="spinner" destination="kal-0S-Tr2" id="SZM-9o-ASt"/>
                         <segue destination="evr-vj-Jce" kind="show" identifier="toCreateAccount" id="zoP-Ew-RD7"/>
                     </connections>
                 </viewController>
