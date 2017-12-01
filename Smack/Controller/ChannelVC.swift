@@ -26,7 +26,16 @@ class ChannelVC: UIViewController {
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: TO_LOGIN_VC, sender: nil)
+        
+        if AuthService.instance.isLoggedIn {
+            // Show profile page when user is logged in (loginBtn title == "UserName"
+            let profile = ProfileVC()
+            profile.modalPresentationStyle = .custom
+            present(profile, animated: true, completion: nil)
+        } else {
+            // Show login page when user is not logged in (loginBtn title == "Login"
+            performSegue(withIdentifier: TO_LOGIN_VC, sender: nil)
+        }
     }
     
     @objc func UserDataDidChange(_ notif: Notification) {
