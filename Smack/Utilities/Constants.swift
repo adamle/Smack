@@ -37,8 +37,14 @@ let BEARER_HEADER = [
     "Content-Type": "application/json; charset=utf-8"
 ]
 
+// Placeholder Font Color
+let SMACKPLACEHOLDERCOLOR = #colorLiteral(red: 0.3515939713, green: 0.4874486923, blue: 0.6412431002, alpha: 0.5)
+func setPlaceholderColor(txtField: UITextField, text: String) {
+    txtField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor : SMACKPLACEHOLDERCOLOR])
+}
 
-
+// Notifaction
+let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
 
 
 

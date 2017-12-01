@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A30CFF86BA5250ECA648FD86 /* Pods_Smack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39FB812806B384A4D49F330 /* Pods_Smack.framework */; };
+		DE0F511E1FD17B5800EC742B /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0F511D1FD17B5800EC742B /* CircleImage.swift */; };
 		DE40AC051FCF1417009AC7A2 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC041FCF1417009AC7A2 /* CreateAccountVC.swift */; };
 		DE40AC081FCF1CC2009AC7A2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC071FCF1CC2009AC7A2 /* AuthService.swift */; };
 		DE40AC0A1FD0915F009AC7A2 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		8C747CA36ED796B5A871A863 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
 		B39FB812806B384A4D49F330 /* Pods_Smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE0F511D1FD17B5800EC742B /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		DE40AC041FCF1417009AC7A2 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		DE40AC071FCF1CC2009AC7A2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				DE49AE611FCEC9BA00160F94 /* GradientView.swift */,
 				DE40AC091FD0915F009AC7A2 /* RoundedButton.swift */,
 				DE40AC0F1FD0B0A9009AC7A2 /* AvatarCell.swift */,
+				DE0F511D1FD17B5800EC742B /* CircleImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				DE49AE601FCDFBFD00160F94 /* ChannelVC.swift in Sources */,
 				DE40AC0A1FD0915F009AC7A2 /* RoundedButton.swift in Sources */,
 				DE49AE5E1FCDFBEC00160F94 /* ChatVC.swift in Sources */,
+				DE0F511E1FD17B5800EC742B /* CircleImage.swift in Sources */,
 				DE40AC0C1FD0996D009AC7A2 /* UserDataService.swift in Sources */,
 				DE40AC051FCF1417009AC7A2 /* CreateAccountVC.swift in Sources */,
 				DE40AC081FCF1CC2009AC7A2 /* AuthService.swift in Sources */,
