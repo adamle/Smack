@@ -15,7 +15,7 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // UserDataService.instance.logoutUser()
         // Touch button to reveal the sw_rear
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         // Slide to access the sw_rear
@@ -29,5 +29,15 @@ class ChatVC: UIViewController {
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             })
         }
+        
+        MessageService.instance.findAllChannel { (success) in
+            
+        }
     }
 }
+
+
+
+
+
+
