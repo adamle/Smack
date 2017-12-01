@@ -30,6 +30,7 @@ class ChatVC: UIViewController {
             })
         }
         
+        // Download all channel when the app launch
         MessageService.instance.findAllChannel { (success) in
             
         }
