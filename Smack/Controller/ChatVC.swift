@@ -13,9 +13,18 @@ class ChatVC: UIViewController {
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var messageTxtBox: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Bind this view to the keyboard when it appears
+        view.bindToKeyboard()
+        
+        // Tap to dismiss keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.tapToDismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         // UserDataService.instance.logoutUser()
         // Touch button to reveal the sw_rear
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -52,6 +61,25 @@ class ChatVC: UIViewController {
     
     @objc func channelSelected(_ notif: Notification) {
         updateWithChannel()
+    }
+    
+    @objc func tapToDismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @IBAction func sendMsgPressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIn {
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return}
+            guard let message = messageTxtBox.text else { return}
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
+                if success {
+                    self.messageTxtBox.text = ""
+                    // Tell the msgTxtBox to resign from its first responder position
+                    // and dismiss the keyboard
+                    self.messageTxtBox.resignFirstResponder()
+                }
+            })
+        }
     }
     
     func updateWithChannel() {
