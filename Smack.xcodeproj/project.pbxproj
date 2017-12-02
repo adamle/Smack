@@ -37,6 +37,7 @@
 		DE569C1A1FD212290076EEDC /* AddChannelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE569C181FD212290076EEDC /* AddChannelVC.xib */; };
 		DE569C1C1FD218560076EEDC /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE569C1B1FD218560076EEDC /* Functions.swift */; };
 		DEE802051FD331A1007A03BA /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE802041FD331A0007A03BA /* KeyboardBoundView.swift */; };
+		DEE802071FD3364F007A03BA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE802061FD3364F007A03BA /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		DE569C181FD212290076EEDC /* AddChannelVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelVC.xib; sourceTree = "<group>"; };
 		DE569C1B1FD218560076EEDC /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		DEE802041FD331A0007A03BA /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
+		DEE802061FD3364F007A03BA /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		E0B9924BE1324D42205164CA /* Pods-Smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 				DE0F512A1FD2087300EC742B /* ChannelCell.swift */,
 				DE49AE611FCEC9BA00160F94 /* GradientView.swift */,
 				DEE802041FD331A0007A03BA /* KeyboardBoundView.swift */,
+				DEE802061FD3364F007A03BA /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				DE40AC051FCF1417009AC7A2 /* CreateAccountVC.swift in Sources */,
 				DE40AC081FCF1CC2009AC7A2 /* AuthService.swift in Sources */,
 				DE0F512B1FD2087300EC742B /* ChannelCell.swift in Sources */,
+				DEE802071FD3364F007A03BA /* MessageCell.swift in Sources */,
 				DE0F51251FD1B2D600EC742B /* RoundedView.swift in Sources */,
 				DE49AE671FCF0A7000160F94 /* LoginVC.swift in Sources */,
 				DE49AE621FCEC9BA00160F94 /* GradientView.swift in Sources */,
