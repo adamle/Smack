@@ -46,6 +46,25 @@ class AddChannelVC: UIViewController {
     }
     
     @IBAction func createChanPressed(_ sender: Any) {
+        // Client sends an emit to Server
+        guard let channelName = chanTitle.text, chanTitle.text != "" else { return}
+        guard let channelDesc = chanDesc.text, chanDesc.text != "" else { return}
+        SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDesc) { (success) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+

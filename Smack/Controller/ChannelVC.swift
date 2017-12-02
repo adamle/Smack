@@ -29,6 +29,12 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Add an observer to listen to Notif from CreateAccountVC
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.UserDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
