@@ -16,12 +16,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var messageTxtBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
+    // Mac-Chat-Api already has socket event for listening on user startType and stopType
+    @IBOutlet weak var typingUsersLbl: UILabel!
     
     // Variable
     var isTyping = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         // Bind this view to the keyboard when it appears
         view.bindToKeyboard()
         
@@ -39,7 +43,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.tapToDismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        // UserDataService.instance.logoutUser()
         // Touch button to reveal the sw_rear
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         // Slide to access the sw_rear
@@ -59,6 +62,32 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let lastIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
                     self.tableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
                 }
+            }
+        }
+        
+        SocketService.instance.getTypingUser { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return}
+            var names = ""
+            var numberOfTypers = 0
+            
+            for (typingUser, channel) in typingUsers {
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            if numberOfTypers > 0 && AuthService.instance.isLoggedIn {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLbl.text = "\(names) \(verb) typing a message"
+            } else {
+                self.typingUsersLbl.text = ""
             }
         }
         
@@ -94,12 +123,17 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Set up sendBtn appear when user edit
     @IBAction func msgBoxEditingChanged(_ sender: Any) {
+        
+        guard let channelId = MessageService.instance.selectedChannel?.id else { return}
+        
         if messageTxtBox.text == "" {
             isTyping = false
             sendBtn.isHidden = true
+            SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
         } else {
-            if isTyping == false {
+            if isTyping == true {
                 sendBtn.isHidden = false
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
@@ -115,6 +149,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     // Tell the msgTxtBox to resign from its first responder position
                     // and dismiss the keyboard
                     self.messageTxtBox.resignFirstResponder()
+                    // Emit stop typing when user send a message
+                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
                 }
             })
         }

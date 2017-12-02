@@ -79,6 +79,17 @@ class SocketService: NSObject {
         }
     }
     
+    // Mac-Chat-Api already has socket event for listening on user startType and stopType
+    // key - username, value - channelId which the user is typing
+    func getTypingUser(_ completionHandler: @escaping (_ typingUsers: [String: String]) -> Void) {
+        
+        socket.on("userTypingUpdate") { (dataArray, ack) in
+            guard let typingUser = dataArray[0] as? [String: String] else { return}
+            completionHandler(typingUser)
+        }
+        
+    }
+    
 }
 
 
