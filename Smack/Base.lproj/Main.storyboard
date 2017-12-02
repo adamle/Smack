@@ -56,7 +56,7 @@
                                         <state key="normal" image="smackBurger"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFT-1w-weJ">
-                                        <rect key="frame" x="145" y="20.5" width="85.5" height="31.5"/>
+                                        <rect key="frame" x="145" y="20" width="85.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
                                         <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -89,6 +89,7 @@
                         <viewLayoutGuide key="safeArea" id="XlW-5c-qnE"/>
                     </view>
                     <connections>
+                        <outlet property="channelNameLbl" destination="jFT-1w-weJ" id="zyC-yl-7o2"/>
                         <outlet property="menuBtn" destination="yMZ-Uz-QZf" id="Mbu-y2-fuG"/>
                     </connections>
                 </viewController>

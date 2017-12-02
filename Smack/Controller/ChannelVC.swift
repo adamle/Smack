@@ -26,8 +26,9 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Add an observer to listen to Notif from CreateAccountVC
+        // Add an observer to listen to Notif from CreateAccountVC and the MessageChannel
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.UserDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
         
         SocketService.instance.getChannel { (success) in
             if success {
@@ -54,19 +55,27 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // Add AddChannel Modal to the main Channel  view
+    // Add AddChannel Modal to the main Channel view
     @IBAction func addChanPressed(_ sender: Any) {
-        let addChannel = AddChannelVC()
-        addChannel.modalPresentationStyle = .custom
-        present(addChannel, animated: true, completion: nil )
+        if AuthService.instance.isLoggedIn {
+            let addChannel = AddChannelVC()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil )
+        }
     }
     
-    
-    
+    // When a notification of user data changed received, this func will call setupUserInfo
     @objc func UserDataDidChange(_ notif: Notification) {
         setupUserInfo()
     }
     
+    // Add an observer to receive NOTIF_CHANNELS_LOADED
+    @objc func channelsLoaded(_ notif: Notification) {
+        tableView.reloadData()
+    }
+    
+    
+    // setupUserInfo for 2 cases: (1) user logged in (2) user not logged in
     func setupUserInfo() {
         if AuthService.instance.isLoggedIn == true {
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
@@ -76,6 +85,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage(named: "menuProfileIcon")
             userImg.backgroundColor = UIColor.clear
+            tableView.reloadData()
         }
     }
     
@@ -95,6 +105,16 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
+    }
+    
+    // Select a channel and post a notification of NOTIF_CHANNELS_SELECTED
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels[indexPath.row]
+        MessageService.instance.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNELS_SELECTED, object: nil)
+        
+        // Slide back the menu sidebar
+        self.revealViewController().revealToggle(animated: true)
     }
     
     

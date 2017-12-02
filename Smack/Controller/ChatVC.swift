@@ -12,6 +12,7 @@ class ChatVC: UIViewController {
 
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var channelNameLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +24,51 @@ class ChatVC: UIViewController {
         // Tap to conceal the sw_rear
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        // Create an observer for the notification
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.UserDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNELS_SELECTED, object: nil)
+        
+        
+        
         // After user close the app and reopen, check if user already logged in
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             })
         }
-        
-        // Download all channel when the app launch
-        MessageService.instance.findAllChannel { (success) in
-            
+
+    }
+    
+    // When a notification of user data changed received, this func will call setupUserInfo
+    @objc func UserDataDidChange(_ notif: Notification) {
+        if AuthService.instance.isLoggedIn {
+            // Get channels
+            channelNameLbl.text = "Smack"
+            onLoginGetMessages()
+        } else {
+            channelNameLbl.text = "Please login"
         }
     }
+    
+    @objc func channelSelected(_ notif: Notification) {
+        updateWithChannel()
+    }
+    
+    func updateWithChannel() {
+        // Update "Smack" title with selected channel title
+        let channelName = MessageService.instance.selectedChannel?.channelTitle ?? "no name"
+        channelNameLbl.text = "#\(channelName)"
+    }
+    
+    func onLoginGetMessages() {
+        MessageService.instance.findAllChannel { (success) in
+            if success {
+                // Do stuff with channels
+            }
+        }
+    }
+    
+    
 }
 
 
