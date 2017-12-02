@@ -15,6 +15,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTxtBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendBtn: UIButton!
+    
+    // Variable
+    var isTyping = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Dynamic table view cell * Remember to set the line of msgBody to 0 (unlimited)
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Hide sendBtn when user not edit
+        sendBtn.isHidden = true
         
         // Tap to dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.tapToDismissKeyboard))
@@ -40,7 +51,16 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.UserDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNELS_SELECTED, object: nil)
         
-        
+        SocketService.instance.getChatMessage { (success) in
+            if success {
+                self.tableView.reloadData()
+                // Scroll the table to the very last message so that the new message will appear
+                if MessageService.instance.messages.count > 0 {
+                    let lastIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                    self.tableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
+                }
+            }
+        }
         
         // After user close the app and reopen, check if user already logged in
         if AuthService.instance.isLoggedIn {
@@ -59,6 +79,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             onLoginGetMessages()
         } else {
             channelNameLbl.text = "Please login"
+            // Reload data so that no message in table view appears
+            tableView.reloadData()
         }
     }
     
@@ -68,6 +90,19 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @objc func tapToDismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    // Set up sendBtn appear when user edit
+    @IBAction func msgBoxEditingChanged(_ sender: Any) {
+        if messageTxtBox.text == "" {
+            isTyping = false
+            sendBtn.isHidden = true
+        } else {
+            if isTyping == false {
+                sendBtn.isHidden = false
+            }
+            isTyping = true
+        }
     }
     
     @IBAction func sendMsgPressed(_ sender: Any) {

@@ -91,6 +91,9 @@
                                 <color key="textColor" red="0.29128697510000001" green="0.3200853467" blue="0.64825153349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="msgBoxEditingChanged:" destination="95a-MF-n7E" eventType="editingChanged" id="cz3-dS-oOj"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rp-gi-Sab">
                                 <rect key="frame" x="337" y="632" width="30" height="30"/>
@@ -123,16 +126,16 @@
                                                     <color key="textColor" red="0.35159397129999997" green="0.48744869229999999" blue="0.64124310019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageBody" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuH-1W-SYN">
-                                                    <rect key="frame" x="81" y="42" width="279" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                                    <color key="textColor" red="0.35159397129999997" green="0.48744869229999999" blue="0.64124310019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-Wz-F5V">
                                                     <rect key="frame" x="81" y="11" width="100" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
                                                     <color key="textColor" red="0.29128697510000001" green="0.3200853467" blue="0.64825153349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageBody" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuH-1W-SYN">
+                                                    <rect key="frame" x="81" y="42" width="279" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                    <color key="textColor" red="0.35159397129999997" green="0.48744869229999999" blue="0.64124310019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -184,6 +187,7 @@
                         <outlet property="channelNameLbl" destination="jFT-1w-weJ" id="zyC-yl-7o2"/>
                         <outlet property="menuBtn" destination="yMZ-Uz-QZf" id="Mbu-y2-fuG"/>
                         <outlet property="messageTxtBox" destination="Ils-o0-kBr" id="r7x-c0-9tw"/>
+                        <outlet property="sendBtn" destination="7rp-gi-Sab" id="51k-7x-dk2"/>
                         <outlet property="tableView" destination="1cj-td-BoI" id="FKd-18-8YZ"/>
                     </connections>
                 </viewController>
