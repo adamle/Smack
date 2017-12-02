@@ -58,18 +58,40 @@ class ChatVC: UIViewController {
         // Update "Smack" title with selected channel title
         let channelName = MessageService.instance.selectedChannel?.channelTitle ?? "no name"
         channelNameLbl.text = "#\(channelName)"
+        getMessages()
     }
     
     func onLoginGetMessages() {
         MessageService.instance.findAllChannel { (success) in
             if success {
-                // Do stuff with channels
+                // If at least 1 channel exists, set the first channel as defaul
+                if MessageService.instance.channels.count > 0 {
+                    MessageService.instance.selectedChannel = MessageService.instance.channels[0]
+                    self.updateWithChannel()
+                } else {
+                    self.channelNameLbl.text = "No Channel Yet"
+                }
             }
         }
     }
     
+    func getMessages() {
+        guard let channelID = MessageService.instance.selectedChannel?.id else { return}
+        MessageService.instance.findAllMessagesForChannel(channelID: channelID) { (success) in
+            
+        }
+        
+    }
     
 }
+
+
+
+
+
+
+
+
 
 
 
