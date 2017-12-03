@@ -24,13 +24,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Bind this view to the keyboard when it appears
         view.bindToKeyboard()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Clean slate App (new build or download)
+        if AuthService.instance.isLoggedIn == false {
+            channelNameLbl.text = "Please login"
+            // Reload data so that no message in table view appears
+            tableView.reloadData()
+            messageTxtBox.isHidden = true
+        }
         
         // Dynamic table view cell * Remember to set the line of msgBody to 0 (unlimited)
         tableView.estimatedRowHeight = 80
@@ -106,10 +113,12 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             // Get channels
             channelNameLbl.text = "Smack"
             onLoginGetMessages()
+            messageTxtBox.isHidden = false
         } else {
             channelNameLbl.text = "Please login"
             // Reload data so that no message in table view appears
             tableView.reloadData()
+            messageTxtBox.isHidden = true
         }
     }
     
@@ -143,16 +152,21 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if AuthService.instance.isLoggedIn {
             guard let channelId = MessageService.instance.selectedChannel?.id else { return}
             guard let message = messageTxtBox.text else { return}
-            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
-                if success {
-                    self.messageTxtBox.text = ""
-                    // Tell the msgTxtBox to resign from its first responder position
-                    // and dismiss the keyboard
-                    self.messageTxtBox.resignFirstResponder()
-                    // Emit stop typing when user send a message
-                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
-                }
-            })
+            if message != "" {
+                SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
+                    if success {
+                        self.messageTxtBox.text = ""
+                        // Tell the msgTxtBox to resign from its first responder position
+                        // and dismiss the keyboard
+                        self.messageTxtBox.resignFirstResponder()
+                        // Emit stop typing when user send a message
+                        SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
+                        self.isTyping = false
+                        self.sendBtn.isHidden = true
+                    }
+                })
+            }
+
         }
     }
     

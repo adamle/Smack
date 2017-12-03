@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -127,12 +126,6 @@
                                                         <constraint firstAttribute="width" constant="50" id="ttL-ih-jpU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ije-rI-2Au">
-                                                    <rect key="frame" x="197" y="34" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                                    <color key="textColor" red="0.35159397129999997" green="0.48744869229999999" blue="0.64124310019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-Wz-F5V">
                                                     <rect key="frame" x="81" y="11" width="100" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
@@ -145,17 +138,23 @@
                                                     <color key="textColor" red="0.35159397129999997" green="0.48744869229999999" blue="0.64124310019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timeStamp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ije-rI-2Au">
+                                                    <rect key="frame" x="309.5" y="17" width="57.5" height="16"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
+                                                    <color key="textColor" red="0.36437746879999999" green="0.64883577820000005" blue="0.79903382060000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GuH-1W-SYN" firstAttribute="leading" secondItem="q4J-Lc-AzL" secondAttribute="trailing" constant="16" id="0Sm-bv-dVD"/>
                                                 <constraint firstItem="g3m-Wz-F5V" firstAttribute="top" secondItem="q4J-Lc-AzL" secondAttribute="top" id="6WV-fV-1St"/>
-                                                <constraint firstItem="Ije-rI-2Au" firstAttribute="baseline" secondItem="g3m-Wz-F5V" secondAttribute="baseline" id="9Hg-m9-ARz"/>
-                                                <constraint firstItem="Ije-rI-2Au" firstAttribute="leading" secondItem="g3m-Wz-F5V" secondAttribute="trailing" constant="16" id="Dns-f0-s7p"/>
-                                                <constraint firstItem="GuH-1W-SYN" firstAttribute="top" secondItem="Ije-rI-2Au" secondAttribute="bottom" constant="8" id="I0T-XH-S1K"/>
                                                 <constraint firstItem="g3m-Wz-F5V" firstAttribute="leading" secondItem="q4J-Lc-AzL" secondAttribute="trailing" constant="16" id="Lgo-64-CxL"/>
+                                                <constraint firstItem="Ije-rI-2Au" firstAttribute="baseline" secondItem="g3m-Wz-F5V" secondAttribute="baseline" id="Mqc-EW-MJr"/>
                                                 <constraint firstItem="q4J-Lc-AzL" firstAttribute="leading" secondItem="vAM-qC-fKc" secondAttribute="leadingMargin" id="ONi-WZ-5Dr"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="GuH-1W-SYN" secondAttribute="bottom" constant="8" id="OwQ-02-1w4"/>
                                                 <constraint firstItem="GuH-1W-SYN" firstAttribute="trailing" secondItem="vAM-qC-fKc" secondAttribute="trailingMargin" id="UAK-qT-fWE"/>
+                                                <constraint firstItem="GuH-1W-SYN" firstAttribute="top" secondItem="g3m-Wz-F5V" secondAttribute="bottom" constant="8" id="vSe-1Y-dSV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ije-rI-2Au" secondAttribute="trailing" constant="8" id="wwt-jd-J0x"/>
                                                 <constraint firstItem="q4J-Lc-AzL" firstAttribute="top" secondItem="vAM-qC-fKc" secondAttribute="topMargin" id="ybP-NG-inK"/>
                                             </constraints>
                                         </tableViewCellContentView>
