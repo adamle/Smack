@@ -17,6 +17,7 @@ class MessageService {
     // Optional when user is not login, then no channel is selected
     var selectedChannel: Channel?
     var messages = [Message]()
+    var unreadChannel = [String]()
     
     func findAllChannel(completion: @escaping CompletionHandler) {
         Alamofire.request(URL_GET_CHANNEL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
@@ -55,7 +56,7 @@ class MessageService {
                         let userAvatarColor = item["userAvatarColor"].stringValue
                         let timestamp = item["timeStamp"].stringValue
                         
-                        let message = Message(message: messageBody, userName: userName, channelID: channelID, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timestamp: timestamp)
+                        let message = Message(message: messageBody, userName: userName, channelId: channelID, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timestamp: timestamp)
                         self.messages.append(message)
                     }
                     print(self.messages)
