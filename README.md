@@ -12,4 +12,10 @@ In this section, I will provide detailed information about what Smack as an iOS 
 ### User Sign Up Flow
  - User can sign up with Name to display on the forum, email and password for later sign in to use the app
  - User can also pick avatar provided by the app, and choose a random avatar background color
+ 
 ![User Sign Up Flow](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Sign%20Up%20Flow.gif?raw=true)
+
+### Create Channel
+- User can create a new channel with mandatory channel name and description. All users in the app will see the channel 😄There is no option for creating private channel yet.
+
+![Create Channel](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Create%20Channel.gif?raw=true)
