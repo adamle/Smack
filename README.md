@@ -9,6 +9,7 @@ As a UI/UX designer, I always want to know more about coding and gain more under
 
 In this section, I will provide detailed information about what Smack as an iOS app can do.
 
-### User Sign In & Sign Up
-
-![Smack Sign Up Flow](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Sign%20Up%20Flow.gif?raw=true)
+### User Sign Up Flow
+ - User can sign up with Name to display on the forum, email and password for later sign in to use the app
+ - User can also pick avatar provided by the app, and choose a random avatar background color
+![User Sign Up Flow](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Sign%20Up%20Flow.gif?raw=true)
