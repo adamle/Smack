@@ -10,4 +10,5 @@ As a UI/UX designer, I always want to know more about coding and gain more under
 In this section, I will provide detailed information about what Smack as an iOS app can do.
 
 ### User Sign In & Sign Up
-![Sign Up](https://drive.google.com/open?id=1Uz-sUx1OwzDiYpAdbAmwT0dk-QwUuQtY)
+
+![Smack Sign Up Flow](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Sign%20Up%20Flow.gif?raw=true)
