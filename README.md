@@ -1,3 +1,4 @@
+
 # Smack - iOS app for mini-forum
 
 ## About me
@@ -32,6 +33,7 @@ In this section, I will provide detailed information about what Smack as an iOS 
 Here comes the main feature of my Smack app 🎉
  - Users can message each other instantly
  - Users can see who is(are) typing. How cool is that 😍!
+ 
 ![Smack Message Flow](https://github.com/adamle/Smack/blob/master/Shots/Smack%20Message%20Flow.gif?raw=true)
 
 ## Conclusion
@@ -41,7 +43,7 @@ Smack is totally worth my huge effort to build and to learn. After a month of co
 ## Drop me a line
 
 I am more than happy to meet new friends. Talk to me on any channels you like :D
-📩 duongle92vn@gmail.com
-𝐌  https://medium.com/@adamlevn
-🦆 https://twitter.com/LeDangDaiDuong 
 
+ - 📩 duongle92vn@gmail.com 
+ - 𝐌  https://medium.com/@adamlevn 
+ - 🦆 https://twitter.com/LeDangDaiDuong
